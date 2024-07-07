@@ -48,6 +48,22 @@ const computerSelection = getComputerChoice();
 
 playRound(huamanSelection, computerSelection);
 
+function playGame(){
+    roundOne;
+    roundTwo;
+    roundThree;
+    roundFour;
+    roundFive;
+}
+
+const roundOne = playRound(humanScore, computerScore);
+const roundTwo = playRound(humanScore, computerScore);
+const roundThree = playRound(humanScore, computerScore);
+const roundFour = playRound(humanScore, computerScore);
+const roundFive = playRound(humanScore, computerScore);
+
+console.log(playGame(humanScore, computerScore));
+
 
 
 
