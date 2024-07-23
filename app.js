@@ -1,58 +1,66 @@
-const rock = document.querySelector(".rock");
-const paper = document.querySelector(".paper");
-const scissors = document.querySelector(".scissors");
-const result = document.querySelector(".result"); 
+let humanScore = 0;
+let computerScore = 0;
 
-rock.addEventListener('click', function() {
-    playRound('rock', getComputerChoice());
-}); console.log(playRound());
-
-paper.addEventListener('click', function(){
-    playRound('paper', getComputerChoice());
-}); console.log(playRound());
-
-scissors.addEventListener('click', function(){
-    playRound('scissors', getComputerChoice());
-}); console.log(playRound());
-
-
+const rockBtn = document.querySelector(".rock");
+const paperBtn = document.querySelector(".paper");
+const scissorsBtn = document.querySelector(".scissors");
 
 function getComputerChoice(){
     const options = ['rock','paper','scissors'];
    return options[Math.floor(Math.random() * options.length)];
 }
-console.log(getComputerChoice());
 
 function getHumanChoice(){
-    const userInput = prompt('Please choose rock, paper or scissors');
+    userInput = ''
     return userInput;
 }
 
-let humanScore = 0;
-let computerScore = 0;
-
 function playRound(humanChoice, computerChoice){
+    const resultDiv = document.querySelector(".result");
     if(humanChoice === computerChoice){
-        console.log('Tie game pal');
+        const p = document.createElement("p")
+        p.innerText = `This game is a tie, you both picked ${humanChoice}`
+        resultDiv.appendChild(p)
     }else if (humanChoice === 'rock' && computerChoice === 'paper'){
-        console.log("You win! rock beats paper");
+        const p = document.createElement("p")
+        p.innerText = `You lose! ${computerChoice} beats ${humanChoice}`
+        result.appendChild(p)
         humanScore++;
     }else if (humanChoice === 'scissors' && computerChoice === 'paper'){
-        console.log('You win! scissors beats paper');
+        const p = document.createElement("p")
+        p.innerText = `You win! ${humanChoice} beats ${computerChoice}`
+        resultDiv.appendChild(p)
         humanScore++;
     }else if (humanChoice === 'paper' && computerChoice === 'rock'){
-        console.log('You win! paper beats rock.');
+        const p = document.createElement("p")
+        p.innerText = `You win! ${humanChoice} beats ${computerChoice}`
+        resultDiv.appendChild(p)
         humanScore++;
     }else{
-        console.log('Loser!! Computer wins!');
+        const p = document.createElement("p")
+        p.innerText = `Loser! ${computerChoice} wins`
+        resultDiv.appendChild(p)
         computerScore++;
     }
 }
 
-let humanSelection = getHumanChoice();
-let computerSelection = getComputerChoice();
+rockBtn.addEventListener('click', () => {
+    const computerSelection = getComputerChoice()
+    const humanSelection = 'rock'
+    playRound(computerSelection, humanSelection)
+})
 
-playRound(humanSelection, computerSelection);
+paperBtn.addEventListener('click', () => {
+    const computerSelection = getComputerChoice()
+    const humanSelection = 'paper'
+    playRound(computerSelection, humanSelection)
+})
+
+scissorsBtn.addEventListener('click', () => {
+    const computerSelection = getComputerChoice()
+    const humanSelection = 'scissors'
+    playRound(computerSelection, humanSelection)
+})
 
 
 
